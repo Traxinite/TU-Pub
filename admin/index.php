@@ -8,8 +8,8 @@
 
     <title>TU-Pub | Research Repository</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="/TU-Pub/assets/css/style.css">
+    <script src="/TU-Pub/assets/js/script.js" defer></script>
 </head>
 <body>
 

@@ -1,12 +1,18 @@
 
+
 :root {
-    --primary: #781b2b;
-    --primary-dark: #54111e;
-    --background: #f7f8fa;
-    --text: #222633;
-    --muted: #687080;
-    --border: #e5e7eb;
+    --primary: #A10E17;
+    --primary-dark: #790A12;
+    --secondary: #A1383C;
+
+    --background: #F8DADB;
+    --surface: #FFFFFF;
+
+    --text: #32252A;
+    --muted: #765E64;
+    --border: #E9B5B8;
 }
+
 
 * {
     margin: 0;
@@ -324,3 +330,137 @@ footer {
         padding: 10px 14px;
     }
 }
+
+/* TU-PUB - TUP INSPIRED THEME */
+
+body {
+    background: linear-gradient(
+        180deg,
+        #F8DADB 0%,
+        #E9A5AA 55%,
+        #CF303B 100%
+    );
+    background-attachment: fixed;
+    color: var(--text);
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(
+        180deg,
+        #8F0C15,
+        #A1383C
+    );
+    border-bottom: 2px solid #790A12;
+}
+
+.logo,
+.nav-links a {
+    color: #FFFFFF;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #FFD8DB;
+}
+
+.nav-links .admin-link {
+    background: #FFFFFF;
+    color: #A10E17;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(
+        180deg,
+        #A1383C 0%,
+        #CF303B 55%,
+        #E9A5AA 100%
+    );
+    color: #FFFFFF;
+}
+
+.hero .eyebrow {
+    color: #FFE0E2;
+}
+
+.hero-description {
+    color: #FFFFFF;
+}
+
+/* Search */
+.search-box {
+    background: #FFFFFF;
+    border: 1px solid #E9B5B8;
+    box-shadow: 0 5px 20px #790A1220;
+}
+
+.search-box button {
+    background: #A10E17;
+    color: white;
+}
+
+.search-box button:hover {
+    background: #790A12;
+}
+
+/* Publications */
+.publications {
+    background: transparent;
+}
+
+.section-heading h2 {
+    color: #790A12;
+}
+
+.section-heading p,
+#resultCount {
+    color: #59363D;
+}
+
+/* Filter Buttons */
+.filter-btn {
+    background: #FFFFFF;
+    color: #A10E17;
+    border: 1px solid #D69A9E;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #A1383C;
+    color: #FFFFFF;
+}
+
+/* Research Cards */
+.research-card {
+    background: #FFFFFF;
+    border: 1px solid #E9B5B8;
+    border-top: 4px solid #A10E17;
+    box-shadow: 0 4px 14px #790A1212;
+}
+
+.research-card:hover {
+    box-shadow: 0 12px 28px #790A1230;
+}
+
+.card-tag {
+    background: #F8DADB;
+    color: #A10E17;
+}
+
+.card-footer {
+    color: #A10E17;
+}
+
+/* About */
+.about-section {
+    background: #FFF1F2;
+}
+
+/* Footer */
+footer {
+    background: #790A12;
+    color: #FFFFFF;
+}
+
