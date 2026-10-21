@@ -35,6 +35,95 @@ body {
     width: min(1100px, 90%);
     margin: auto;
 }
+/* TU-PUB LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.site-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+    padding: 3px;
+}
+
+.site-logo:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 600px) {
+    .site-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+}
+
+
+/* TU-PUB HERO LOGO */
+
+.hero-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.hero-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+
+    background: white;
+    border-radius: 50%;
+    padding: 8px;
+
+    border: 4px solid rgba(255, 255, 255, 0.65);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .hero-logo {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .hero-logo {
+        animation: none;
+    }
+}
+
 
 /* NAVIGATION */
 
@@ -464,3 +553,303 @@ footer {
     color: #FFFFFF;
 }
 
+
+/* ===== TU-PUB NAVBAR AND SIDEBAR ===== */
+
+:root {
+    --sidebar-width: 250px;
+    --navbar-height: 76px;
+}
+
+/* NAVBAR */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: linear-gradient(
+        135deg,
+        #790A12,
+        #A1383C
+    );
+}
+
+.nav-content {
+    width: 100%;
+    max-width: none;
+    min-height: var(--navbar-height);
+    margin: 0;
+    padding: 0 25px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+    white-space: nowrap;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.site-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    background: white;
+    color: #A10E17;
+    padding: 11px 18px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.admin-link:hover {
+    background: #FFE3E5;
+}
+
+/* MENU BUTTON */
+
+.menu-toggle {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    bottom: 0;
+
+    width: var(--sidebar-width);
+    background: #FFFFFF;
+    border-right: 1px solid #E9B5B8;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+    z-index: 900;
+    transition: transform 0.25s ease;
+}
+
+.sidebar-heading {
+    padding: 25px 20px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: #A10E17;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 13px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+
+    color: #45383C;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.sidebar-link > span:first-child {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: #F8DADB;
+    color: #A10E17;
+}
+
+.sidebar-link.active {
+    font-weight: bold;
+}
+
+.sidebar-link.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sidebar-link small {
+    margin-left: auto;
+    font-size: 10px;
+    color: #A10E17;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid #E9B5B8;
+    font-size: 12px;
+    color: #765E64;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    min-width: 0;
+    transition: margin-left 0.25s ease;
+}
+
+/* COLLAPSED SIDEBAR */
+
+body.sidebar-collapsed .sidebar {
+    transform: translateX(-100%);
+}
+
+body.sidebar-collapsed .main-content {
+    margin-left: 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    :root {
+        --navbar-height: 70px;
+    }
+
+    .nav-content {
+        padding: 0 15px;
+        flex-wrap: nowrap;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .site-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-left {
+        gap: 10px;
+    }
+
+    .admin-link {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        box-shadow: 4px 0 20px #00000015;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    body.sidebar-collapsed .sidebar {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .main-content {
+        transition: none;
+    }
+}
+
+/* TU-PUB HERO BACKGROUND */
+
+.hero {
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(75, 5, 15, 0.72),
+            rgba(120, 15, 30, 0.78)
+        ),
+        url("/TU-Pub/assets/images/tup-background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 550px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px;
+    color: white;
+}
+
+/* HERO CONTENT */
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    max-width: 850px;
+}
+
+.hero h1 {
+    color: #FFFFFF;
+    font-size: clamp(30px, 5vw, 48px);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero-description {
+    color: #FFFFFF;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 480px;
+        padding: 60px 15px;
+        background-position: center;
+    }
+}

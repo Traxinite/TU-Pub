@@ -36,55 +36,156 @@ $publications = $stmt->fetchAll();
 
     <link rel="stylesheet" href="/TU-Pub/assets/css/style.css">
     <script src="/TU-Pub/assets/js/script.js" defer></script>
+
+    
+<link
+    rel="icon"
+    type="image/png"
+    href="/TU-Pub/assets/images/tu-pub-logo.png"
+>
+
 </head>
-<body>
+<body class="sidebar-collapsed">
 
     <!-- NAVIGATION -->
-    <header class="navbar">
-        <div class="container nav-content">
-            <a href="index.php" class="logo">
-                <span class="logo-icon">🎓</span>
-                TU-Pub
-            </a>
+    
+<!-- TOP NAVIGATION -->
+<header class="navbar">
+    <div class="nav-content">
 
-            <nav class="nav-links">
-                <a href="index.php" class="active">Home</a>
-                <a href="#publications">Browse Research</a>
-                <a href="#about">About</a>
-                <a href="admin/login.php" class="admin-link">
-                    Admin Login
-                </a>
-            </nav>
+        <div class="nav-left">
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle sidebar"
+                aria-controls="sidebar"
+                aria-expanded="true"
+            >
+                ☰
+            </button>
+
+            <a href="index.php" class="logo">
+                <img
+                    src="/TU-Pub/assets/images/tu-pub-logo.png"
+                    alt="TU-Pub Logo"
+                    class="site-logo"
+                >
+                <span>TU-Pub</span>
+            </a>
         </div>
-    </header>
+
+        <a href="admin/login.php" class="admin-link">
+            Admin Login
+        </a>
+
+    </div>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-heading">
+        REPOSITORY
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+
+        <a href="index.php" class="sidebar-link active">
+            <span>⌂</span> Home
+        </a>
+
+        <a href="#publications" class="sidebar-link">
+            <span>▤</span> Browse Research
+        </a>
+
+        <a href="#publications" class="sidebar-link">
+            <span>▦</span> Departments
+        </a>
+
+        <div class="sidebar-heading">
+            FUTURE FEATURES
+        </div>
+
+        <span class="sidebar-link disabled">
+            <span>⌕</span> Advanced Search
+            <small>Soon</small>
+        </span>
+
+        <span class="sidebar-link disabled">
+            <span>☆</span> Featured Research
+            <small>Soon</small>
+        </span>
+
+        <span class="sidebar-link disabled">
+            <span>▥</span> Research Statistics
+            <small>Soon</small>
+        </span>
+
+        <div class="sidebar-heading">
+            INFORMATION
+        </div>
+
+        <a href="#about" class="sidebar-link">
+            <span>ⓘ</span> About TU-Pub
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+        <p>TU-Pub Prototype</p>
+        <small>Version 1.0</small>
+    </div>
+
+</aside>
+
+<!-- MAIN CONTENT WRAPPER -->
+<div class="main-content" id="mainContent">
+
 
     <!-- HERO -->
-    <section class="hero">
-        <div class="container hero-content">
-            <p class="eyebrow">TUP Research Repository</p>
+    
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="container hero-content">
 
-            <h1>Discover Academic Research</h1>
-
-            <p class="hero-description">
-                Explore thesis and research publications
-                from the Technological University
-                of the Philippines.
-            </p>
-
-            <div class="search-box">
-                <input
-                    type="search"
-                    id="searchInput"
-                    placeholder="Search by title, author, or keyword..."
-                    aria-label="Search research publications"
-                >
-
-                <button type="button" id="searchBtn">
-                    Search
-                </button>
-            </div>
+        <!-- TU-PUB LOGO -->
+        <div class="hero-logo-container">
+            <img
+                src="/TU-Pub/assets/images/tu-pub-logo.png"
+                alt="TU-Pub Research Repository Logo"
+                class="hero-logo"
+            >
         </div>
-    </section>
+
+        <p class="eyebrow">
+            TUP Research Repository
+        </p>
+
+        <h1>Discover Academic Research</h1>
+
+        <p class="hero-description">
+            Explore thesis and research publications
+            from the Technological University
+            of the Philippines.
+        </p>
+
+        <div class="search-box">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search by title, author, or keyword..."
+                aria-label="Search research publications"
+            >
+
+            <button type="button" id="searchBtn">
+                Search
+            </button>
+        </div>
+
+    </div>
+</section>
+
 
     <!-- PUBLICATIONS -->
     <main>
@@ -209,6 +310,6 @@ $publications = $stmt->fetchAll();
             <p>© 2026 TU-Pub | Academic Repository Prototype</p>
         </div>
     </footer>
-
+</div> <!-- End main-content -->
 </body>
 </html>

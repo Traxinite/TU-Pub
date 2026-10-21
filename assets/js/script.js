@@ -71,3 +71,41 @@ filterButtons.forEach(button => {
 
 // Show initial result count
 filterResearch();
+
+// ===== SIDEBAR TOGGLE =====
+
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+
+function updateSidebarState() {
+    const isMobile = window.innerWidth <= 768;
+    const collapsed = document.body.classList
+        .contains("sidebar-collapsed");
+
+    const expanded = isMobile ? collapsed : !collapsed;
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(expanded)
+    );
+}
+
+menuToggle.addEventListener("click", () => {
+    document.body.classList.toggle("sidebar-collapsed");
+    updateSidebarState();
+});
+
+// Close mobile sidebar after selecting a link
+sidebar.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+            document.body.classList.remove("sidebar-collapsed");
+            updateSidebarState();
+        }
+    });
+});
+
+window.addEventListener("resize", updateSidebarState);
+
+updateSidebarState();
+
