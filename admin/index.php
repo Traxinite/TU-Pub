@@ -1,4 +1,30 @@
 
+<?php
+
+
+require_once __DIR__ . "/../config/database.php";
+
+
+$stmt = $pdo->prepare("
+    SELECT
+        publication_id,
+        title,
+        authors,
+        abstract,
+        department,
+        publication_year
+    FROM publications
+    WHERE status = 'published'
+    ORDER BY created_at DESC, publication_id DESC
+");
+
+$stmt->execute();
+
+$publications = $stmt->fetchAll();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,81 +121,69 @@
                 </button>
             </div>
 
-            <div class="research-grid" id="researchGrid">
+            
+<div class="research-grid" id="researchGrid">
 
-                <article class="research-card"
-                         data-department="Information Technology">
+    <?php foreach ($publications as $publication): ?>
 
-                    <span class="card-tag">
-                        Information Technology
-                    </span>
+        <article
+            class="research-card"
+            data-department="<?= htmlspecialchars(
+                $publication['department'],
+                ENT_QUOTES,
+                'UTF-8'
+            ) ?>"
+        >
 
-                    <h3>Web-Based Research Repository System</h3>
+            <span class="card-tag">
+                <?= htmlspecialchars(
+                    $publication['department']
+                ) ?>
+            </span>
 
-                    <p class="description">
-                        A centralized platform for organizing
-                        and discovering academic publications.
-                    </p>
+            <h3>
+                <?= htmlspecialchars(
+                    $publication['title']
+                ) ?>
+            </h3>
 
-                    <div class="card-meta">
-                        <span>Author: Sample Researcher</span>
-                        <span>Year: 2026</span>
-                    </div>
+            <p class="description">
+                <?= htmlspecialchars(
+                    mb_strimwidth(
+                        $publication['abstract'],
+                        0,
+                        150,
+                        "..."
+                    )
+                ) ?>
+            </p>
 
-                    <span class="card-footer">
-                        Sample Publication
-                    </span>
-                </article>
+            <div class="card-meta">
+                <span>
+                    Author:
+                    <?= htmlspecialchars(
+                        $publication['authors']
+                    ) ?>
+                </span>
 
-                <article class="research-card"
-                         data-department="Computer Engineering">
-
-                    <span class="card-tag">
-                        Computer Engineering
-                    </span>
-
-                    <h3>IoT-Based Flood Monitoring System</h3>
-
-                    <p class="description">
-                        A monitoring prototype using sensors
-                        to detect changing water levels.
-                    </p>
-
-                    <div class="card-meta">
-                        <span>Author: Sample Researcher</span>
-                        <span>Year: 2025</span>
-                    </div>
-
-                    <span class="card-footer">
-                        Sample Publication
-                    </span>
-                </article>
-
-                <article class="research-card"
-                         data-department="Mechanical Engineering">
-
-                    <span class="card-tag">
-                        Mechanical Engineering
-                    </span>
-
-                    <h3>Automated Material Sorting Prototype</h3>
-
-                    <p class="description">
-                        A prototype for sorting materials
-                        using automated mechanisms.
-                    </p>
-
-                    <div class="card-meta">
-                        <span>Author: Sample Researcher</span>
-                        <span>Year: 2025</span>
-                    </div>
-
-                    <span class="card-footer">
-                        Sample Publication
-                    </span>
-                </article>
-
+                <span>
+                    Year:
+                    <?= htmlspecialchars(
+                        (string) $publication['publication_year']
+                    ) ?>
+                </span>
             </div>
+
+            <span class="card-footer">
+                Published Research
+            </span>
+
+        </article>
+
+    <?php endforeach; ?>
+
+</div>
+
 
             <p id="noResults" class="no-results" hidden>
                 No publications found. Try another search.
